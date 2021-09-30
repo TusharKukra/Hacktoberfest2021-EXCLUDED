@@ -1,38 +1,82 @@
-#include<bits/stdc++.h>
-
+#include <iostream>
+#include <iterator>
+#include <map>
+  
 using namespace std;
-
-int main(){
-
-    // Map: Maps are associative containers that store elements formed by a combination of a key value and a mapped value.
-    // or Map is a data structure in which data is store with its key value.
-
-    map<int, string> m;  // here default map will be Ordered Map (all the values are in sorted order (key value))
-    
-    m[2] = "def";
-    m[1] = "abc";
-    m[15] = "ghi";
-
-    // here 1,2,15 are the key and abc, def, ghi are their corresponing value
-
-    // another way of inserting elements:
-    m.insert( {19, "jkl" });
-
-    //now to print them, create a iterator
-    for(auto i : m){
-        cout<<"Key: "<<i.first<<" "<<"Value: "<<i.second<<endl;
+  
+int main()
+{
+  
+    // empty map container
+    map<int, int> gquiz1;
+  
+    // insert elements in random order
+    gquiz1.insert(pair<int, int>(1, 40));
+    gquiz1.insert(pair<int, int>(2, 30));
+    gquiz1.insert(pair<int, int>(3, 60));
+    gquiz1.insert(pair<int, int>(4, 20));
+    gquiz1.insert(pair<int, int>(5, 50));
+    gquiz1.insert(pair<int, int>(6, 50));
+    gquiz1.insert(pair<int, int>(7, 10));
+  
+    // printing map gquiz1
+    map<int, int>::iterator itr;
+    cout << "\nThe map gquiz1 is : \n";
+    cout << "\tKEY\tELEMENT\n";
+    for (itr = gquiz1.begin(); itr != gquiz1.end(); ++itr) {
+        cout << '\t' << itr->first
+             << '\t' << itr->second << '\n';
     }
-
-    cout<<"Finding element (let say: 15) "<<m.count(15)<<endl;
-
-    // erase operation
-    cout<<"After Erase: ";
-    m.erase(15);  // by entering Key ,we can erase key and a corresponding value
-    
-    for(auto i : m){
-        cout<<"Key: "<<i.first<<" "<<"Value: "<<i.second<<endl;
+    cout << endl;
+  
+    // assigning the elements from gquiz1 to gquiz2
+    map<int, int> gquiz2(gquiz1.begin(), gquiz1.end());
+  
+    // print all elements of the map gquiz2
+    cout << "\nThe map gquiz2 after"
+         << " assign from gquiz1 is : \n";
+    cout << "\tKEY\tELEMENT\n";
+    for (itr = gquiz2.begin(); itr != gquiz2.end(); ++itr) {
+        cout << '\t' << itr->first
+             << '\t' << itr->second << '\n';
     }
-
-
+    cout << endl;
+  
+    // remove all elements up to
+    // element with key=3 in gquiz2
+    cout << "\ngquiz2 after removal of"
+            " elements less than key=3 : \n";
+    cout << "\tKEY\tELEMENT\n";
+    gquiz2.erase(gquiz2.begin(), gquiz2.find(3));
+    for (itr = gquiz2.begin(); itr != gquiz2.end(); ++itr) {
+        cout << '\t' << itr->first
+             << '\t' << itr->second << '\n';
+    }
+  
+    // remove all elements with key = 4
+    int num;
+    num = gquiz2.erase(4);
+    cout << "\ngquiz2.erase(4) : ";
+    cout << num << " removed \n";
+    cout << "\tKEY\tELEMENT\n";
+    for (itr = gquiz2.begin(); itr != gquiz2.end(); ++itr) {
+        cout << '\t' << itr->first
+             << '\t' << itr->second << '\n';
+    }
+  
+    cout << endl;
+  
+    // lower bound and upper bound for map gquiz1 key = 5
+    cout << "gquiz1.lower_bound(5) : "
+         << "\tKEY = ";
+    cout << gquiz1.lower_bound(5)->first << '\t';
+    cout << "\tELEMENT = "
+         << gquiz1.lower_bound(5)->second << endl;
+    cout << "gquiz1.upper_bound(5) : "
+         << "\tKEY = ";
+    cout << gquiz1.upper_bound(5)->first << '\t';
+    cout << "\tELEMENT = "
+         << gquiz1.upper_bound(5)->second << endl;
+  
     return 0;
 }
