@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include<conio.h>
 #include<math.h>
-#include<stdlib.>
+#include<stdlib.h>
 
 
 void main()
