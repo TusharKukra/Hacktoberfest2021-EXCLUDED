@@ -1,7 +1,4 @@
-#include <iostream>
-#include <string.h>
-#include<climits>
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 class MyClass {       // The class
   public:             // Access specifier
