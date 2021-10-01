@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include<conio.h>
+#include<math.h>
+
 void main()
 {
    int i,j,spc,rows,k,t=0;
