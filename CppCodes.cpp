@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 
 class MyClass {       // The class
   public:             // Access specifier
