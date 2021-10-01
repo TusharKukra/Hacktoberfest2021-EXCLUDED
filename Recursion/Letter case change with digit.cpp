@@ -1,7 +1,3 @@
-// Rahul kumar
-// Dayananda sagar college of engineering 
-
-
 #include <bits/stdc++.h>
 
 using namespace std;
