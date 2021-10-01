@@ -1,5 +1,3 @@
-// Rahul kumar
-// Dayananda sagar college of engineering
 #include <iostream>
 #include<bits/stdc++.h>
 
