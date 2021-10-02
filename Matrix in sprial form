@@ -1,0 +1,81 @@
+#include <iostream>
+
+using namespace std;
+
+#define R 3
+
+#define C 3
+
+void sprial(int a[R][C])
+
+{ int n=R;
+
+  int t=0,d=n-1,l=0,r=n-1,dir=0;
+
+  while(t<=d && l<=r)
+
+  {
+
+    if(dir==0)
+
+    {
+
+      for(int i=l;i<=r;i++)
+
+       cout<<a[t][i];
+
+       t++; dir++;
+
+    }
+
+    if(dir==1)
+
+    {
+
+      for(int i=t;i<=d;i++)
+
+       cout<<a[i][r];
+
+       r--; dir++;
+
+    }
+
+    if(dir==2)
+
+    {
+
+      for(int i=r;i>=l;i--)
+
+       cout<<a[d][i];
+
+       d--; dir++;
+
+    }
+
+    if(dir==3)
+
+    {
+
+      for(int i=d;i>=t;i--)
+
+       cout<<a[i][l];
+
+       l++; dir++;
+
+    }
+
+    dir=dir%4;
+
+  }
+
+}
+
+int main()
+
+{
+
+    int a[R][C]={{1,1,1},{2,2,2},{3,3,3}};
+
+    sprial(a);
+
+}
