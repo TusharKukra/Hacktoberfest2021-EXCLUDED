@@ -1,58 +1,71 @@
-/*
-    C++ for quick sort
-*/
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
+int c=0;
 
-void swap(int* num1, int* num2)
+int *read(int *arr,int n)
 {
-	int temp = *num1;
-	*num1 = *num2;
-	*num2 = temp;
+  cout<<"Enter the elements\n";
+  for(int i=0;i<n;i++)
+  {
+    cin>>arr[i];
+  }
+  return arr;
 }
 
-int partition (int arr[], int low, int high)
-{
-	int pivot = arr[high]; 
-	int i = (low - 1); 
-
-	for (int j = low; j <= high - 1; j++)
-	{
-		if (arr[j] < pivot)
-		{
-			i++;
-			swap(&arr[i], &arr[j]);
-		}
-	}
-	swap(&arr[i + 1], &arr[high]);
-	return (i + 1);
+void display(int arr[], int size) {
+  for (int i = 0; i < size; i++)
+    cout << arr[i] << " ";
+  cout << endl;
 }
 
-void quickSort(int arr[], int low, int high)
+int partition(int *a, int l, int h)
 {
-	if (low < high)
-	{
-		int pi = partition(arr, low, high);
+    c++;
+    int pivot = a[l], i = l, j = h + 1;
+    while (i <= j)
+    {
+        do
+        {
+            i++;
+        } while (a[i] <= pivot);
 
-		quickSort(arr, low, pi - 1);
-		quickSort(arr, pi + 1, high);
-	}
+        do
+        {
+            j--;
+        } while (a[j] > pivot);
+
+        if (i < j)
+        {
+            swap(a[i], a[j]);
+        }
+    }
+
+    swap(a[l], a[j]);
+    return j;
+}
+void quickSort(int *a, int l, int h)
+{
+    c++;
+    if (l < h)
+    {
+        int p = partition(a, l, h);
+        quickSort(a, l, p - 1);
+        quickSort(a, p + 1, h);
+    }
+    else
+        return;
 }
 
-void print(int arr[], int size)
-{
-	int i;
-	for (i = 0; i < size; i++)
-		cout << arr[i] << " ";
-	cout << endl;
-}
-
-int main()
-{
-	int arr[] = {11, 2, 6, 9, 22, 3, 8, 10};
-	int n = sizeof(arr) / sizeof(arr[0]);
-	quickSort(arr, 0, n - 1);
-	cout << "Sorted array: \n";
-	print(arr, n);
-	return 0;
+int main() {
+  int n;
+  cout<<"Enter the number of elements"<<endl;
+  cin>>n;
+  int *arr;
+  arr=read(arr,n);
+  cout << "Unsorted arr: \n";
+  display(arr, n);
+  quickSort(arr, 0, n - 1);
+  cout << "Sorted array: \n";
+  display(arr, n);
+  return 0;
 }
