@@ -3,10 +3,10 @@ Python program to check if year is a leap year or not
 Author: Ayushi Rawat
 '''
 
-year = 2000
+
 
 # To get year (integer input) from the user
-# year = int(input("Enter the year: "))
+ year = int(input("Enter the year: "))
 
 if (year % 4) == 0:
    if (year % 100) == 0:
