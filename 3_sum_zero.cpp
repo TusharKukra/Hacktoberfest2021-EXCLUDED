@@ -1,4 +1,6 @@
 #include<bits/stdc++.h>
+#include<iostream>
+
 using namespace std;
 
 vector<vector<int>> sol(vector<int>&A){
