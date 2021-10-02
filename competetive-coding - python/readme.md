@@ -2,7 +2,7 @@
 <hr/>
 
 ## Question : 1 
-## Solution : [longest-common-prefix]("./longest-common-prefix.py")
+## Solution : [longest-common-prefix](./longest-common-prefix.py)
 
 The longest common prefix for N strings of length at most M each is defined as a string K
 Such that every string has K as a prefix.
@@ -33,7 +33,7 @@ a
 <hr/>
 
 ## Question : 2
-## Solution : [paths-in-a-maze]("./paths-in-a-maze.py")
+## Solution : [paths-in-a-maze](./paths-in-a-maze.py)
 
 Feeling adventurous Kumar decides to explore a maze which is in the form of a matrix . The matrix's cells are numbered as (r,c) where r is the row number and c is the column number.
 
