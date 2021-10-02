@@ -1,5 +1,5 @@
 package ARRAYS;
-
+import java.util.*;
 
 import org.jetbrains.annotations.NotNull;
 
