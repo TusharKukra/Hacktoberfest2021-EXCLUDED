@@ -1,5 +1,5 @@
 package ARRAYS;
-
+import java.util.*;
 
 //When we dont know wether the sorting is in ascending or descending order....
 public class AgnosticBinarySearch {
