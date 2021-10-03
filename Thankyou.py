@@ -1,0 +1,1 @@
+print('Thanks You '*100)
