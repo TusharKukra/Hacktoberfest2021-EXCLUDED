@@ -57,3 +57,21 @@ Output must consist of a single integer , the total number of paths modulo 10000
 1
 
 <hr/>
+
+## Question : 3
+
+## Solution : [reverse_vowels_in_a_string](./reverse_vowels_in_a_string.py)
+Given a string s, reverse only all the vowels in the string and return it.
+
+The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both cases.
+
+### Constraints
+1 <= s.length <= 3 * 10000
+s consist of printable ASCII characters.
+
+### Sample Input
+Input: s = "hello"
+
+### Sample Output
+Output: "holle"
+
