@@ -22,13 +22,13 @@ void main()
       scanf("%d",&choice);
       switch(choice)
       {
-	 case 1:insert();
-		break;
-	 case 2:del();
-		break;
-	 case 3:traverse();
-		break;
-	 default:printf("Invalid choice");
+     case 1:insert();
+        break;
+     case 2:del();
+        break;
+     case 3:traverse();
+        break;
+     default:printf("Invalid choice");
       }
       printf("\n Do u wish to continue...");
       fflush(stdin);
@@ -48,9 +48,9 @@ void insert()
       printf("\nEnter a value to insert:: ");
       scanf("%d",&item);
       if(front==-1)
-	      front=rear=0;
+          front=rear=0;
       else
-	      rear=rear+1;
+          rear=rear+1;
       que[rear]=item;
 
    }
@@ -70,7 +70,7 @@ void del()
     }
     if(front==rear)
     {
-	front=rear=-1;
+    front=rear=-1;
     }
     else
     {
@@ -91,7 +91,7 @@ if(front<0)
     {
       for(i=front;i<=rear;i++)
       {
-	 printf("\n%d",que[i]);
+     printf("\n%d",que[i]);
       }
     }
 }
