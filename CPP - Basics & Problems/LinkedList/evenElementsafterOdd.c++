@@ -1,59 +1,52 @@
-#include<bits/stdc++.h>
+#include <iostream>
 using namespace std;
-class node{
-    public:
+struct node {
     int data;
-    node* next;
-    node(int val){
-        data=val;
-        next = NULL;
-    }
+    struct node *next;
 };
-void displayLinkedList(node* head){
-    node* temp=head;
-    while(temp != NULL){
-        cout << temp->data<<" --> ";
-        temp=temp->next;
-    }
-    cout << "NULL" << '\n';
+typedef node *LPTR;
+void addback(LPTR L,int x) {
+    while (L!=NULL) L=L->next;
+    L=new(node);
+    L->data=x;
+    L->next=NULL;
 }
-void insertTail(node* &head, int val){
-    node* n = new node(val);
-    if(head==NULL){ 
-        head=n;
-        return;
-    }
-    node* temp=head;
-    while(temp->next != NULL){
-        temp=temp->next;
-    }
-    temp->next=n;
+int create(LPTR &L) {
+    int n,t=0;cin>>n; if (n%2 && n!=-1) t++;
+    L->data=n;
+    L->next=NULL;
+    while (n!=-1) {
+        cin>>n; if (n%2 && n!=-1) t++;
+        if (n!=-1) addback(L,n);
+    } return t;
 }
-void evenAfterOdd(node* &head){
-    node* odd = head;
-    node* even = head->next;
-    node* evenStart = even;
-    while(odd->next != NULL && even->next != NULL){
-        odd->next = even->next;
-        odd = odd->next;
-        even->next = odd->next;
-        even = even->next;
-    }
-    odd->next = evenStart;
-    if(odd->next == NULL){
-        even->next = NULL;
-    }
+void printf(LPTR L) {
+    while (L->next!=NULL) { cout<<L->data<<" "; L=L->next; }
+    cout<<L->data<<endl;
+    return;
 }
-int main (){
-    node* head=NULL;
-    insertTail(head,1);
-    insertTail(head,2);
-    insertTail(head,3);
-    insertTail(head,4);
-    insertTail(head,5);
-    insertTail(head,6);
-    insertTail(head,7);
-    displayLinkedList(head);
-    evenAfterOdd(head);
-    displayLinkedList(head);
+LPTR segregate(LPTR &L,int t) {
+    int i=0;
+    LPTR L1=L;
+    while (i<t) {
+        if (L->data%2==0) {
+            i++;
+            addback(L,L->data);
+            L=L->next;L1=L;
+        }
+        else if (L1->next->data%2==0) {
+            i++; 
+            addback(L1,L1->next->data);
+            L1->next=L1->next->next;
+        } else L1=L1->next;
+    }
+    return L;
+}
+int main() {
+    LPTR L1;
+    L1=new(node);
+    int t=create(L1);
+    printf(L1);
+    L1=segregate(L1,t);
+    printf(L1);
 }
