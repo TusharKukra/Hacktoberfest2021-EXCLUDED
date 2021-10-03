@@ -1,54 +1,62 @@
-#include<bits/stdc++.h>
+#include <iostream>
 using namespace std;
-
-int precedence(char c){
-    if(c == '^'){
-        return 3;
-    }else if(c == '*' || c == '/'){
-        return 2;
-    }else if(c == '+' || c == '-'){
-        return 1;
-    }else{
-        return -1;
+union ch 
+{
+    int d;
+    char c;
+};
+struct un {
+    int tag;
+    union ch t;
+};
+struct stack {
+    int size=30;
+    int top=-1;
+    struct un elem[30];
+};
+struct stack1 {
+    int size=30;
+    int top=-1;
+    int elem[30];
+};
+void push(stack1 &s,int x) {
+    if (s.top<s.size-1) s.elem[++s.top]=x;
+}
+int pop(stack1 &s) {
+    if (s.top>-1) return s.elem[s.top--];
+}
+void dsa(stack1 &s,char c) {
+    int t1,t2;
+    if (c=='+') { 
+        t1=pop(s);  t2=pop(s);  push(s,t1+t2); 
+    }
+    if (c=='-') { 
+        t1=pop(s);  t2=pop(s);  push(s,t1-t2);
+    }
+    if (c=='*') { 
+        t1=pop(s);  t2=pop(s);  push(s,t1*t2);
+    }
+    if (c=='/') { 
+        t1=pop(s);  t2=pop(s);  push(s,t1/t2);
     }
 }
-
-string infixToPrefix(string s){
-    reverse(s.begin(), s.end());
-    stack<char> st;
-    string res;
-    for(int i=0; i<s.size(); i++){
-        if((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z')){
-            res += s[i];
-        }else if(s[i] == ')'){
-            st.push(s[i]);
-        }else if(s[i] == '('){
-            while(!st.empty() && st.top() != ')'){
-                res += st.top();
-                st.pop();
-            }
-            if(!st.empty()){
-                st.pop();
-            }
-        }else{
-            while(!st.empty() && precedence(st.top())>precedence(s[i])){
-                res += st.top();
-                st.pop();
-            }
-            st.push(s[i]);
+int main() {
+    stack s;
+    stack1 s1;
+    int t1,t=0;
+    while (t1!=-1) {
+        cin>>t1;
+        if (t1!=-1) {
+            t++;
+            s.top++;
+            s.elem[s.top].tag=t1;
+            if (t1==1) cin>>s.elem[s.top].t.c;
+            else cin>>s.elem[s.top].t.d;
         }
     }
-    while(!st.empty()){
-        res += st.top();
-        st.pop();
+    for (int i=0;i<t;i++) {
+        if (s.elem[s.top].tag==0) { push(s1,s.elem[s.top].t.d); s.top--; }
+        else {dsa(s1,s.elem[s.top].t.c); s.top--; }
     }
-
-    reverse(res.begin(), res.end());
-
-    return res;
-}
-
-int main(){
-    string s = "(a-b/c)*(a/k-l)";
-    cout << infixToPrefix(s);
+    cout<<s1.elem[s1.top];
 }
