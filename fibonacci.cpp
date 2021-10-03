@@ -1,26 +1,22 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
-int Fib(int n)
+int main()
 {
-    if (n == 0 || n == 1)
-    {
-        return n;
-    }
-    else {
-        return Fib(n-1) + Fib(n-2);
-    }
-}
+    cout<<"Enter Number:";
+    int x,temp;
+    cin>>x;
+    int prev=0, curr=0, next=1;
 
-int main(){
-    int n,j=0;
-    cout << "Enter the total number of terms:";
-    cin >> n;
-
-    for(int i=1; i<=n; i++)
+    for(int i=0;i<x;i++)
     {
-            int r = Fib(j);
-            cout << r << " ";
-            j++;
+        prev=curr;
+
+        curr=next;
+
+        next=prev+curr;
+
+        cout<<prev<<" ";
     }
+    
 }
